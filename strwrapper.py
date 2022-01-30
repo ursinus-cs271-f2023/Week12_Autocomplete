@@ -3,8 +3,10 @@ class StrWrapper:
         self.s = s
     
     def hash_code(self):
-        ## TODO: Fill this in
-        return 0 # This is a dummy value
+        ret = 0
+        for c in self.s:
+            ret = 31*ret + ord(c)
+        return ret
 
     def __eq__(self, other):
         return self.s == other.s
@@ -13,5 +15,6 @@ class StrWrapper:
         return self.s
     
 if __name__ == '__main__':
-    s1 = StrWrapper("CS 371")
-    print(s1 == StrWrapper("CS 37" + "1"))
+    for s in ["hello", "cs 371", "computers rock"]:
+        swrap = StrWrapper(s)
+        print(swrap, swrap.hash_code())
